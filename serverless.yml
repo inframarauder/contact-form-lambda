@@ -1,0 +1,16 @@
+service: static-site-mailer
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+  region: ap-south-1
+
+functions:
+  staticSiteMailer:
+    handler: handler.staticSiteMailer
+    events:
+      - http:
+          method: post
+          path: send_mail
+          cors: true
