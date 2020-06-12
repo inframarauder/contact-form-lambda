@@ -19,7 +19,7 @@ module.exports.staticSiteMailer = async (event) => {
   try {
     const { name, email, subject, message } = event.body;
     const mailOptions = {
-      to: "subhasisdas125@gmail.com",
+      to: process.env.TO_EMAIL,
       subject: `Mail from portfolio - ${subject}`,
       html: `
       <p><strong> Sender :${name} ( ${email} ) </strong></p>
