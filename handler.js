@@ -1,5 +1,5 @@
 "use strict";
-require("dotenv");
+
 const nodemailer = require("nodemailer");
 
 const transport = nodemailer.createTransport({
@@ -17,12 +17,18 @@ const transport = nodemailer.createTransport({
 
 module.exports.staticSiteMailer = async (event) => {
   try {
+    const { name, email, subject, message } = event.body;
     const mailOptions = {
-      from: event.body.email,
       to: "subhasisdas125@gmail.com",
-      subject: event.body.subject,
-      body: event.body.message,
+      subject: `Mail from portfolio - ${subject}`,
+      html: `
+      <p><strong> Sender :${name} ( ${email} ) </strong></p>
+      <p>
+        ${message}
+      </p>
+      `,
     };
+
     await transport.sendMail(mailOptions);
     return {
       statusCode: 200,
