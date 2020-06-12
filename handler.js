@@ -32,6 +32,11 @@ module.exports.staticSiteMailer = async (event) => {
     await transport.sendMail(mailOptions);
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      },
     };
   } catch (error) {
     console.error(error);
