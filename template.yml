@@ -2,12 +2,12 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: Forwards message sent through form to my email.
 Resources:
-  TimeFunction:
+  ContactFormFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: handler.contactFormHandler
       Runtime: nodejs12.x
-      CodeUri: ./
+      CodeUri: https://contact-form-lambda-artifacts.s3.ap-south-1.amazonaws.com/50cc30b34839b212e968b2574ee530bb
       Events:
         FormApi:
           Type: Api
