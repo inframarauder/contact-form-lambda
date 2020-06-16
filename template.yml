@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: handler.contactFormHandler
       Runtime: nodejs12.x
-      CodeUri: https://contact-form-lambda-artifacts.s3.ap-south-1.amazonaws.com/50cc30b34839b212e968b2574ee530bb
+      CodeUri: s3://contact-form-lambda-artifacts/50cc30b34839b212e968b2574ee530bb
       Events:
         FormApi:
           Type: Api
