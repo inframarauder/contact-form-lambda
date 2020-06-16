@@ -7,9 +7,9 @@ phases:
     commands:
       - npm install nodemailer
       - export BUCKET=contact-form-lambda-artifacts
-      - aws cloudformation package --template-file serverless.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+      - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
 artifacts:
   type: zip
   files:
-    - serverless.yml
+    - template.yml
     - outputtemplate.yml
