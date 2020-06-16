@@ -15,9 +15,9 @@ const transport = nodemailer.createTransport({
   },
 });
 
-module.exports.staticSiteMailer = async (event) => {
+module.exports.contactFormHandler = async (event) => {
   try {
-    const { name, email, subject, message } = event.body;
+    const { name, email, subject, message } = JSON.parse(event.body);
     const mailOptions = {
       to: process.env.TO_EMAIL,
       subject: `Mail from portfolio - ${subject}`,

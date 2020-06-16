@@ -3,14 +3,13 @@ service: static-site-mailer
 provider:
   name: aws
   runtime: nodejs12.x
-
   region: ap-south-1
 
 functions:
   staticSiteMailer:
-    handler: handler.staticSiteMailer
+    handler: handler.contactFormHandler
     events:
       - http:
           method: post
-          path: send_mail
+          path: form_handler
           cors: true
