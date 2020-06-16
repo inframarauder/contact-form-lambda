@@ -1,0 +1,15 @@
+service: gimme-time
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  environment:
+    STAGE: ${opt:stage}
+
+functions:
+  ContactFormFunction:
+    handler: handler.contactFormHandler
+    events:
+      - http:
+          path: /handle_form
+          method: post
