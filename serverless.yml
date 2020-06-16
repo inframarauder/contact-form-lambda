@@ -1,15 +1,16 @@
-service: static-site-mailer
-
-provider:
-  name: aws
-  runtime: nodejs12.x
-  region: ap-south-1
-
-functions:
-  staticSiteMailer:
-    handler: handler.contactFormHandler
-    events:
-      - http:
-          method: post
-          path: form_handler
-          cors: true
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Forwards message sent through form to my email.
+Resources:
+  TimeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handler.contactFormHandler
+      Runtime: nodejs12.x
+      CodeUri: ./
+      Events:
+        FormApi:
+          Type: Api
+          Properties:
+            Path: /contact
+            Method: POST
