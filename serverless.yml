@@ -3,8 +3,6 @@ service: contact-form-lambda
 provider:
   name: aws
   runtime: nodejs12.x
-  environment:
-    STAGE: ${opt:stage}
   region: ap-south-1
 
 functions:
